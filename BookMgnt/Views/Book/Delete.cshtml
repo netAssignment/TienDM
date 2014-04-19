@@ -1,0 +1,117 @@
+﻿@model BookMgnt.Models.Book
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Chi tiết</h2>
+
+<style type="text/css">
+    .detailBook {
+        border: 1px solid gray;
+        border-radius: 3px;
+    }
+
+    .headerDetail {
+        width: 300px;
+        padding-top: 35px;
+        display: inline-block;
+        margin-left: 50px;
+    }
+
+    .intro {
+        padding: 10px;
+        margin-top: 50px;
+    }
+
+        .intro p:first-of-type:first-letter {
+            background-color: #3399FF;
+            color: #FFF;
+            float: left;
+            font-size: 20px;
+            margin-right: 10px;
+            padding: 0px 10px 9px 10px;
+            height: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px -2px #999999;
+        }
+
+    textarea {
+        width: 50%;
+        height: 100px;
+        border: 1px solid gray;
+        margin-top: 10px;
+        overflow: auto;
+    }
+</style>
+
+<div class="detailBook">
+    <div style="width: 500px; margin: auto;">
+        <div style="text-align: center; padding-top: 10px; float: left;">
+            <img src="@Url.Content("../../Content/imageBook/" +
+            @Html.DisplayFor(model => model.imagePath))" />
+        </div>
+        <div class="headerDetail">
+            <p><strong>Name: </strong>@Html.DisplayFor(model => model.Name)</p>
+            <p><strong>Author: </strong>@Html.DisplayFor(model => model.Author)</p>
+            <p><strong>Catgory: </strong>@Html.DisplayFor(model => model.Categories.Name)</p>
+            <p><strong>Author: </strong>@Html.DisplayFor(model => model.Author)</p>
+            <p><strong>Publish year: </strong>@Model.pubYear.ToShortDateString()</p>
+        </div>
+    </div>
+    <div class="intro">
+        <p>@Html.DisplayFor(model => model.Introduce)</p>
+    </div>
+    @*<h4>Book</h4>
+        <dl class="dl-horizontal">
+            <dd>
+                <img src="@Url.Content("../../Content/imageBook/BusinessBook/" +
+                @Html.DisplayFor(model => model.imagePath))"/>
+            </dd>
+            <div>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Author)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Author)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Introduce)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Introduce)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.pubYear)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.pubYear)
+                </dd>
+            </div>
+        </dl>*@    
+</div>
+<div style="padding-top:10px">
+    @using (Html.BeginForm())
+    {
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+    }
+</div>
+

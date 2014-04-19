@@ -1,0 +1,75 @@
+﻿@model BookMgnt.Models.Book
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Book</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CategoriesID, "CategoriesID", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CategoriesID", String.Empty)
+                @Html.ValidationMessageFor(model => model.CategoriesID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Author, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Author)
+                @Html.ValidationMessageFor(model => model.Author)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Introduce, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Introduce)
+                @Html.ValidationMessageFor(model => model.Introduce)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.imagePath, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.imagePath)
+                @Html.ValidationMessageFor(model => model.imagePath)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.pubYear, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.pubYear)
+                @Html.ValidationMessageFor(model => model.pubYear)
+            </div>
+        </div>
+
+        <div class="form-actions no-color">
+                <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style type="text/css">
+        .dropmenu ul{
+            display: none;
+            background-color: #000000;
+            padding: 10px;
+        }
+
+        .dropmenu:hover ul{
+            display: block;
+        }
+        .dropmenu li{
+            color: white;
+        }
+		
+		.dropmenu ul{
+            display: none;
+            background-color: #000000;
+            padding: 10px;
+        }
+
+        .dropmenu:hover ul{
+            display: block;
+        }
+
+        .ulMenuBook li{
+            padding: 5px;
+        }
+
+        /*.ulMenuBook li:hover{
+            background-color: #ffffff;
+        }*/
+
+        .ulMenuBook li > a {
+            text-decoration: none;
+            color: gray;
+        }
+
+        .ulMenuBook li > a:hover {
+            color: #2ECCFA;
+        }
+
+    </style>
+    <script type="text/javascript">
+        document.
+        @if (User.Identity.Name == "admin")
+        {
+            
+        }
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div style="width: 100%; height: 100px; background-color: white;">
+            <img style="padding: 10px;" src="~/Content/image/icon.png" />
+        </div>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Book Management", "Index", "Book", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if(User.Identity.Name=="admin")
+                    { 
+                    <li class="adminpage">
+                        @Html.ActionLink("Admin", "Index", "Admin")
+                    </li>
+                    }
+                    @*<li>@Html.ActionLink("Home", "Index", "Book")</li>*@
+                    <li class="dropmenu">@Html.ActionLink("Book", "Index", "Book")
+                        <ul class="ulMenuBook" style="list-style-type: none; position: absolute; width: 150px;">
+                            <li>
+                                <a href=@Url.Action("Category", "Book", new{id=1})>Business Book</a>                               
+                            </li>
+                            <li>                                
+                                <a href=@Url.Action("Category", "Book", new{id=2})>Children Book</a>                                
+                            </li>
+                            <li>                                
+                                <a href=@Url.Action("Category", "Book", new{id=3})>Technology Book</a>                                
+                            </li>
+                            <li>                                
+                                <a href=@Url.Action("Category", "Book", new{id=4})>Music Book</a>                                
+                            </li>
+                            <li>                               
+                                <a href=@Url.Action("Category", "Book", new{id=5})>Liturature Book</a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()        
+    </div>
+    <hr />
+    <footer style="text-align: center;">
+        <p>&copy; @DateTime.Now.Year - Doan Minh Tien. Alright Reserve</p>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

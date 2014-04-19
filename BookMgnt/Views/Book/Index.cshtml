@@ -1,0 +1,50 @@
+﻿@model IEnumerable<BookMgnt.Models.Book>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style type="text/css">
+    .bookContain {
+        float: left;
+        border-radius: 5px;
+        width: 250px;
+        margin: 6px;
+    }
+    .bookContain a{
+        text-decoration: none;
+        font-size: 17px;
+    }
+</style>
+
+<div>
+    <h2>Tất cả</h2>
+    @foreach (var item in Model)
+    {
+        <div class="bookContain">
+            <div style="text-align: center; padding: 10px; height: 200px;">
+                <img src="@Url.Content("../../Content/imageBook/" + @item.imagePath)"/>
+            </div>
+            <div style="text-align: center;">
+                <div>
+                    <div>
+                        <a>
+                            @Html.ActionLink(@item.Name, "Details", "Book", new { id = @item.ID }, null)
+                        </a>
+                    </div>                    
+                    <!--<p>@item.Introduce</p>-->
+                    <div style="">
+                        <p><strong>Author: </strong>@item.Author</p>
+                        <p><strong>Publish year: </strong>@item.pubYear.ToShortDateString()</p>
+                    </div>
+                </div>                
+            </div>         
+        </div>
+        @*@Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+    }    
+</div>   
+
+    @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+    @Html.ActionLink("Details", "Details", new { id=item.ID }) |*@
+    
+
